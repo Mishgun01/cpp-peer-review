@@ -8,24 +8,6 @@ struct ParseCitySubjsonRequest {
 };
 
 // Функция для парсинга JSON-объекта с городами конкретной страны
-void ParseCitySubjson(vector<City>& cities, const Json& json, const ParseCitySubjsonRequest& parse_city_subjson_request) {
-    for (const auto& city_json : json.AsList()) {
-        const auto& city_obj = city_json.AsObject();
-        
-        // Создаем город, используя информацию из запроса, и добавляем его в список городов
-        cities.push_back({
-            city_obj["name"s].AsString(),
-            city_obj["iso_code"s].AsString(),
-            parse_city_subjson_request.country_phone_code + city_obj["phone_code"s].AsString(),
-            parse_city_subjson_request.country_name,
-            parse_city_subjson_request.country_iso_code,
-            parse_city_subjson_request.country_time_zone,
-            parse_city_subjson_request.languages
-        });
-    }
-}
-
-// Функция ParseCitySubjson перегружена для использования структуры ParseCitySubjsonRequest
 void ParseCitySubjson(vector<City>& cities, const Json& json, ParseCitySubjsonRequest parse_city_subject_request) {
     for (const auto& city_json : json.AsList()) {
         const auto& city_obj = city_json.AsObject();
